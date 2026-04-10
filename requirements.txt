@@ -1,0 +1,7 @@
+flask
+gspread
+google-auth
+pandas
+pymupdf
+google-generativeai
+python-dotenv

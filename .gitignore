@@ -1,0 +1,20 @@
+# Environment variables
+.env
+
+# Credentials (Private)
+credentials.json
+
+# Local Python files
+api_key.py
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Local data
+pdfs/
+txts/
+*.csv
+
+# IDEs
+.vscode/
+.idea/

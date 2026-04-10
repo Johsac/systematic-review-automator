@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Systematic Review Automator</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="glass-container">
+        <header>
+            <h1>📄 Review Automator Pro</h1>
+            <div class="header-actions">
+                <button id="configBtn" class="btn-secondary">⚙️ Configure Fields</button>
+            </div>
+        </header>
+
+        <main>
+            <!-- Left: File List -->
+            <section class="file-panel">
+                <h2>📂 File Queue (PDFs)</h2>
+                <div id="fileList" class="file-list">
+                    <p class="empty-msg">Scanning PDF folder...</p>
+                </div>
+            </section>
+
+            <!-- Center: Extraction Form -->
+            <section class="data-panel">
+                <div id="loading" class="loading-overlay hidden">
+                    <div class="spinner"></div>
+                    <p>AI is analyzing the document...</p>
+                </div>
+
+                <div id="welcomeScreen" class="welcome-screen">
+                    <div class="icon">🔍</div>
+                    <h2>Data Analysis</h2>
+                    <p>Select a PDF from the left list to start the automated extraction.</p>
+                </div>
+
+                <form id="dataForm" class="hidden">
+                    <div id="dynamicFields">
+                        <!-- Fields will be generated here -->
+                    </div>
+
+                    <div class="form-footer">
+                        <button type="button" id="uploadBtn" class="btn-primary">Upload to Google Sheets</button>
+                        <p id="statusMsg" class="status-msg"></p>
+                    </div>
+                </form>
+
+            </section>
+
+            <!-- Right: PDF Viewer -->
+            <aside class="pdf-viewer-panel">
+                <h2>📑 Document Viewer</h2>
+                <div class="pdf-container">
+                    <iframe id="pdfFrame" src="" width="100%" height="750px" style="border: none; border-radius: 8px; background: rgba(0,0,0,0.2);"></iframe>
+                </div>
+            </aside>
+        </main>
+    </div>
+
+    <!-- Configuration Modal -->
+    <div id="configModal" class="modal hidden">
+        <div class="modal-content glass-card">
+            <h2>⚙️ Extract Settings</h2>
+            <p>Define the fields you want Gemini to extract from each PDF.</p>
+            
+            <div class="fields-list-container">
+                <table id="configTable">
+                    <thead>
+                        <tr>
+                            <th>Key (ID)</th>
+                            <th>Label (UI)</th>
+                            <th>Description for AI</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="fieldsListBody">
+                        <!-- Config rows here -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="modal-actions" style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem;">
+                <button id="addFieldBtn" class="btn-primary" style="background: var(--success); font-size: 1.1rem; padding: 1rem; letter-spacing: 0.05em; display: flex; align-items: center; justify-content: center; gap: 0.5rem;"><span>➕</span> Add New Custom Field</button>
+                
+                <div style="display: flex; gap: 1rem; width: 100%;">
+                    <button id="saveConfigBtn" class="btn-primary" disabled style="opacity: 0.5; cursor: not-allowed;">Save Settings</button>
+                    <button id="closeConfigBtn" class="btn-outline" style="width: 100%;">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/main.js"></script>
+</body>
+</html>
